@@ -1,7 +1,7 @@
-#Rime schema uuhvu
+#Rime schema wuhyu
 schema:
-  schema_id: uuhvu
-  name: uuhvu
+  schema_id: wuhyu
+  name: wuhyu
   version: "1.0"
   author:
     - "CH3CO3H"
@@ -33,7 +33,7 @@ engine:
     - uniquifier
 translator:
     dictionary: luna_pinyin
-    prism: uuhvu
+    prism: wuhyu
 punctuator:
   full_shape:
     "\"": {pair: ["「", "」"]}
@@ -66,20 +66,22 @@ speller:
     - "xform/(.)ong$/$1S/"
     - "xform/y?ing$/IG/"
     - "xform/^yu/V/"
-    - "xform/^([jqx])u$/$1V/"
+    - "xform/^([jqx])u/$1V/"
+    - "xform/ue$/VE/"
     - "xform/^w(.+)/u$1/"
     - "xform/^y(.+)/i$1/"
     - "xform/^([iu]){2}/$1/"
-    - "xform/^chi$/AE/"
     - "xform/^zh/Y/"
     - "xform/^ch/E/"
     - "xform/^sh/W/"
-    - "xform/^([jqxviurzcsYEW])i$/$1/"
+    - "xform/^([jqxviurzcsYW])i$/$1/"
     - "xform/^([bpmf])o$/$1/"
     - "xform/^([dtnlgkh])e$/$1/"
-    - "xform/iu$/iz/"
-    - "xform/ui$/uw/"
-    - "xform/un$/uf/"
-    - "xform/in$/if/"
+    - "xform/iu$/IZ/"
+    - "xform/ui$/UW/"
+    - "xform/un$/UF/"
+    - "xform/Vn$/VF/"
+    - "xform/in$/IF/"
+    - "xform/^Ei$/AE/"
     - "xform/^er$/AR/"
-    - xlit/QWERTYIOPASDFGHJKLZXCVBNM/qwertyiopasdfghjklzxcvbnm/
+    - xlit/QWERTYUIOPASDFGHJKLZXCVBNM/qwertyuiopasdfghjklzxcvbnm/
