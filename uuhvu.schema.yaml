@@ -1,0 +1,85 @@
+#Rime schema uuhvu
+schema:
+  schema_id: uuhvu
+  name: uuhvu
+  version: "1.0"
+  author:
+    - "CH3CO3H"
+  dependencies:
+    - luna_pinyin
+switches:
+  - name: ascii_punct
+    states: ["。，", "．，"]
+  - name: simplification
+    states: ["繁", "简"]
+engine:
+  processors:
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+#    - punct_translator
+    - reverse_lookup_filter
+    - script_translator
+  filters:
+    - simplifier
+    - uniquifier
+translator:
+    dictionary: luna_pinyin
+    prism: uuhvu
+punctuator:
+  full_shape:
+    "\"": {pair: ["「", "」"]}
+  half_shape:
+    "\"": {pair: ["「", "」"]}
+#   import_preset: default
+key_binder:
+  bindings:
+    - when: paging
+      accept: comma
+      send: Page_Up
+    - when: has_menu
+      accept: period
+      send: Page_Down
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  algebra:
+    - "erase/^xx$/"
+    - "xform/^([aoe])([ioun])$/A$1$2/"
+    - "xform/^([ae]ng)$/A$1/"
+    - "xform/(.)ai$/$1D/"
+    - "xform/(.)ei$/$1W/"
+    - "xform/(.)ao$/$1C/"
+    - "xform/(.)ou$/$1Z/"
+    - "xform/(.)an$/$1J/"
+    - "xform/(.)en$/$1F/"
+    - "xform/(.)ang$/$1H/"
+    - "xform/(.)eng$/$1G/"
+    - "xform/(.)ong$/$1S/"
+    - "xform/y?ing$/IG/"
+    - "xform/^yu/V/"
+    - "xform/^([jqx])u$/$1V/"
+    - "xform/^w(.+)/u$1/"
+    - "xform/^y(.+)/i$1/"
+    - "xform/^([iu]){2}/$1/"
+    - "xform/^chi$/AE/"
+    - "xform/^zh/Y/"
+    - "xform/^ch/E/"
+    - "xform/^sh/W/"
+    - "xform/^([jqxviurzcsYEW])i$/$1/"
+    - "xform/^([bpmf])o$/$1/"
+    - "xform/^([dtnlgkh])e$/$1/"
+    - "xform/iu$/iz/"
+    - "xform/ui$/uw/"
+    - "xform/un$/uf/"
+    - "xform/in$/if/"
+    - "xform/^er$/AR/"
+    - xlit/QWERTYIOPASDFGHJKLZXCVBNM/qwertyiopasdfghjklzxcvbnm/
