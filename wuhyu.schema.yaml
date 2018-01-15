@@ -11,6 +11,7 @@ switches:
   - name: ascii_punct
     states: ["。，", "．，"]
   - name: simplification
+    reset: 1
     states: ["繁", "简"]
 engine:
   processors:
@@ -25,7 +26,7 @@ engine:
     - punct_segmentor
     - fallback_segmentor
   translators:
-#    - punct_translator
+    - punct_translator
     - reverse_lookup_filter
     - script_translator
   filters:
@@ -35,11 +36,11 @@ translator:
     dictionary: luna_pinyin
     prism: wuhyu
 punctuator:
+  import_preset: default
   full_shape:
     "\"": {pair: ["「", "」"]}
   half_shape:
     "\"": {pair: ["「", "」"]}
-#   import_preset: default
 key_binder:
   bindings:
     - when: paging
@@ -85,3 +86,4 @@ speller:
     - "xform/^Ei$/AE/"
     - "xform/^er$/AR/"
     - xlit/QWERTYUIOPASDFGHJKLZXCVBNM/qwertyuiopasdfghjklzxcvbnm/
+    - abbrev/^([qwrtypsdfghjklzxcbnm]).+$/$1/
