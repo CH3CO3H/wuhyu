@@ -1,0 +1,6 @@
+patch:
+  "schema_list/@0/schema": wuhyu
+  "schema_list/@1/schema": luna_pinyin_simp
+  "schema_list/@2/schema": luna_pinyin
+  "switcher/caption": "options"
+  "menu/page_size": 9
