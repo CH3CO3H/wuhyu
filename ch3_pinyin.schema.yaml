@@ -1,0 +1,53 @@
+# Rime schema
+# encoding: UTF-8
+
+schema:
+  schema_id: ch3_pinyin
+  name: CH3CO3H quanpin
+  version: '1.0'
+  author: [ CH3CO3H ]
+  description: "simple pinyin input method, for wuhyu"
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ Zh, En ]
+  - name: simplification
+    reset: 1
+    states: [ Tr, Sp ]
+  - name: ascii_punct
+    states: [ '॰', '.' ]
+
+engine:
+  processors:
+    - ascii_composer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator
+  filters:
+    - simplifier
+    - uniquifier
+
+speller:
+  alphabet: abcdefghijklmnopqrstuvwxyz
+  delimiter: "'"
+
+translator:
+  dictionary: ch3_pinyin
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default

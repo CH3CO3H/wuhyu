@@ -1,13 +1,16 @@
 #Rime schema wuhyu
 schema:
   schema_id: wuhyu
-  name: wuhyu
-  version: "1.0"
+  name: 双注拼音
+  version: "2.0"
   author:
     - "CH3CO3H"
   dependencies:
-    - luna_pinyin
+    - ch3_pinyin
 switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ "中", "英" ]
   - name: ascii_punct
     states: ["。，", "．，"]
   - name: simplification
@@ -15,6 +18,7 @@ switches:
     states: ["繁", "简"]
 engine:
   processors:
+    - ascii_composer
     - key_binder
     - speller
     - punctuator
@@ -22,68 +26,56 @@ engine:
     - navigator
     - express_editor
   segmentors:
+    - ascii_segmentor
     - abc_segmentor
     - punct_segmentor
     - fallback_segmentor
   translators:
+    - echo_translator
     - punct_translator
     - reverse_lookup_filter
     - script_translator
   filters:
     - simplifier
     - uniquifier
-translator:
-    dictionary: luna_pinyin
-    prism: wuhyu
-punctuator:
-  import_preset: default
-  full_shape:
-    "\"": {pair: ["「", "」"]}
-  half_shape:
-    "\"": {pair: ["「", "」"]}
-key_binder:
-  bindings:
-    - when: paging
-      accept: comma
-      send: Page_Up
-    - when: has_menu
-      accept: period
-      send: Page_Down
 speller:
   alphabet: zyxwvutsrqponmlkjihgfedcba
-  delimiter: " '"
+  delimiter: "'"
   algebra:
-    - "erase/^xx$/"
-    - "xform/^([aoe])([ioun])$/A$1$2/"
-    - "xform/^([ae]ng)$/A$1/"
-    - "xform/(.)ai$/$1D/"
-    - "xform/(.)ei$/$1W/"
-    - "xform/(.)ao$/$1C/"
-    - "xform/(.)ou$/$1Z/"
-    - "xform/(.)an$/$1J/"
-    - "xform/(.)en$/$1F/"
-    - "xform/(.)ang$/$1H/"
-    - "xform/(.)eng$/$1G/"
-    - "xform/(.)ong$/$1S/"
-    - "xform/y?ing$/IG/"
-    - "xform/^yu/V/"
-    - "xform/^([jqx])u/$1V/"
-    - "xform/ue$/VE/"
-    - "xform/^w(.+)/u$1/"
-    - "xform/^y(.+)/i$1/"
-    - "xform/^([iu]){2}/$1/"
+    - "xform/^y/I/"
+    - "xform/^w/U/"
     - "xform/^zh/Y/"
     - "xform/^ch/E/"
     - "xform/^sh/W/"
-    - "xform/^([jqxviurzcsYW])i$/$1/"
     - "xform/^([bpmf])o$/$1/"
     - "xform/^([dtnlgkh])e$/$1/"
+    - "xform/^([jqxYEWrzcsI])i$/$1/"
+    - "xform/^Uu$/U/"
+    - "xform/^Iu$/V/"
     - "xform/iu$/IZ/"
     - "xform/ui$/UW/"
-    - "xform/un$/UF/"
-    - "xform/Vn$/VF/"
     - "xform/in$/IF/"
-    - "xform/^Ei$/AE/"
-    - "xform/^er$/AR/"
+    - "xform/I?ing$/IG/"
+    - "xform/^([jqx])un$/$1VF/"
+    - "xform/un$/UF/"
+    - "xform/ai$/D/"
+    - "xform/ei$/W/"
+    - "xform/ao$/C/"
+    - "xform/ou$/Z/"
+    - "xform/an$/J/"
+    - "xform/en$/F/"
+    - "xform/ang$/H/"
+    - "xform/eng$/G/"
+    - "xform/ong$/S/"
+    - "xform/^er$/R/"
+    - "xform/ue$/VE/"
     - xlit/QWERTYUIOPASDFGHJKLZXCVBNM/qwertyuiopasdfghjklzxcvbnm/
-    - abbrev/^([qwrtypsdfghjklzxcbnm]).+$/$1/
+    - derive/^([bpmfdtnlgkhjqxzcsyewiu]).*$/$1/
+punctuator:
+  import_preset: default
+translator:
+  dictionary: ch3_pinyin
+punctuator:
+  import_preset: default
+key_binder:
+  import_preset: default

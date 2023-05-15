@@ -1,6 +1,93 @@
 patch:
-  "schema_list/@0/schema": wuhyu
-  "schema_list/@1/schema": luna_pinyin_simp
-  "schema_list/@2/schema": luna_pinyin
-  "switcher/caption": "options"
+  schema_list:
+    - schema: luna_pinyin
+    - schema: ch3_pinyin
+    - schema: wuhyu
+  "switcher/caption": "OPTIONS"
+  "switcher/hotkeys": [ Control+grave ]
+  "switcher/option_list_separator": '/'
   "menu/page_size": 9
+  key_binder:
+    bindings:
+      - when: paging
+        accept: comma
+        send: Page_Up
+      - when: has_menu
+        accept: period
+        send: Page_Down
+  punctuator:
+    full_shape:
+      ' ' : { commit: '　' }
+      ',' : { commit: ， }
+      '.' : { commit: 。 }
+      '<' : [ 《, 〈 ]
+      '>' : [ 》, 〉 ]
+      '/' : '/'
+      '?' : { commit: ？ }
+      ';' : { commit: ； }
+      ':' : { commit: ： }
+      '''' : [ '‘', '’', '『', '』' ]
+      '"' : [ '“', '”' , '「', '」' ]
+      '\' : '、'
+      '|' : '｜'
+      '`' : ｀
+      '~' : ～
+      '!' : { commit: ！ }
+      '@' : ＠
+      '#' : ＃
+      '%' : ％
+      '$' : '$'
+      '^' : { commit: …… }
+      '&' : ＆
+      '*' : [ ＊, ·, ・, × ]
+      '_' : ——
+      '+' : ＋
+      '=' : ＝
+      '[' : 【
+      ']' : 】
+      '{' : ｛
+      '}' : ｝
+    half_shape:
+      ',' : { commit: ， }
+      '.' : { commit: 。 }
+      '<' : [ 《, 〈 ]
+      '>' : [ 》, 〉 ]
+      '/' : '/'
+      '?' : { commit: ？ }
+      ';' : { commit: ； }
+      ':' : { commit: ： }
+      '''' : [ '‘', '’', '『', '』' ]
+      '"' : [ '“', '”' , '「', '」' ]
+      '\' : '、'
+      '|' : '｜'
+      '`' : '`'
+      '~' : [ '~', ～ ]
+      '!' : { commit: ！ }
+      '@' : '@'
+      '#' : '#'
+      '%' : [ '%', ％, '°', '℃' ]
+      '$' : [ ￥, '$', '€', '£', '¥', '¢', '¤' ]
+      '^' : { commit: …… }
+      '&' : '&'
+      '*' : '*'
+      '(' : （
+      ')' : ）
+      '-' : '-'
+      '_' : ——
+      '+' : '+'
+      '=' : '='
+      '[' : [ 「, 【, 〔, ［ ]
+      ']' : [ 」, 】, 〕,  ］ ]
+      '{' : [ 『, 〖, ｛ ]
+      '}' : [ 』, 〗, ｝ ]
+
+  recognizer: {}
+  ascii_composer:
+    good_old_caps_lock: true
+    switch_key:
+      Shift_L: noop
+      Shift_R: noop
+      Control_L: noop
+      Control_R: noop
+      Caps_Lock: clear
+      Eisu_toggle: noop
