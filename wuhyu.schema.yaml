@@ -51,12 +51,13 @@ speller:
     - "xform/^([dtnlgkh])e$/$1/"
     - "xform/^([jqxYEWrzcsI])i$/$1/"
     - "xform/^Uu$/U/"
-    - "xform/^Iu$/V/"
+    - "xform/^Iu/V/"
     - "xform/iu$/IZ/"
     - "xform/ui$/UW/"
-    - "xform/in$/IF/"
+    - "xform/I?in$/IF/"
     - "xform/I?ing$/IG/"
-    - "xform/^([jqx])un$/$1VF/"
+    - "xform/^([jqx])u/$1V/"
+    - "xform/Vn$/VF/"
     - "xform/un$/UF/"
     - "xform/ai$/D/"
     - "xform/ei$/W/"
@@ -70,7 +71,7 @@ speller:
     - "xform/^er$/R/"
     - "xform/ue$/VE/"
     - xlit/QWERTYUIOPASDFGHJKLZXCVBNM/qwertyuiopasdfghjklzxcvbnm/
-    - derive/^([bpmfdtnlgkhjqxzcsyewiu]).*$/$1/
+#    - derive/^([bpmfdtnlgkhjqxzcsyewiu]).+$/$1/
 punctuator:
   import_preset: default
 translator:
