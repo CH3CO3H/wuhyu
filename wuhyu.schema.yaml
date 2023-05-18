@@ -2,7 +2,7 @@
 schema:
   schema_id: wuhyu
   name: 双注拼音
-  version: "2.0"
+  version: "2.1"
   author:
     - "CH3CO3H"
   dependencies:
@@ -31,9 +31,7 @@ engine:
     - punct_segmentor
     - fallback_segmentor
   translators:
-    - echo_translator
     - punct_translator
-    - reverse_lookup_filter
     - script_translator
   filters:
     - simplifier
@@ -54,28 +52,31 @@ speller:
     - "xform/^Iu/V/"
     - "xform/iu$/IZ/"
     - "xform/ui$/UW/"
-    - "xform/I?in$/IF/"
+    - "xform/^Iin$/IN/"
     - "xform/I?ing$/IG/"
     - "xform/^([jqx])u/$1V/"
-    - "xform/Vn$/VF/"
-    - "xform/un$/UF/"
     - "xform/ai$/D/"
     - "xform/ei$/W/"
     - "xform/ao$/C/"
     - "xform/ou$/Z/"
     - "xform/an$/J/"
-    - "xform/en$/F/"
+    - "xform/en$/N/"
     - "xform/ang$/H/"
     - "xform/eng$/G/"
     - "xform/ong$/S/"
     - "xform/^er$/R/"
     - "xform/ue$/VE/"
     - xlit/QWERTYUIOPASDFGHJKLZXCVBNM/qwertyuiopasdfghjklzxcvbnm/
-#    - derive/^([bpmfdtnlgkhjqxzcsyewiu]).+$/$1/
+#    - derive/^([a-z]).+$/$1/
 punctuator:
   import_preset: default
 translator:
   dictionary: ch3_pinyin
+  prism: wuhyu
+  enable_sentence: true
+  enable_user_dict: true
+  user_dict: wuhyu.dict
+  db_class: tabledb
 punctuator:
   import_preset: default
 key_binder:
